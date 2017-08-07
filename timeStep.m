@@ -38,6 +38,7 @@ iR = [1:nx]'; iS = nx+iR; idx = [iR iS];
 betas   = p0(3);
 betaR1  = p0(4);
 betaR2  = p0(5);
+
 kern = @(x,beta) sqrt(1/(2*pi*beta^2)) * exp( -(1/(2*beta^2))*x.^2);
 ws  = kern(x,betas);
 wr1 = kern(x,betaR1);

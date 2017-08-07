@@ -3,15 +3,21 @@ function [F,Jv] = CitiesModel(u,p,ws,wr1,wr2,x,Lx,idx,v);
 % Rename parameters
   lambda  = p(1);
   k       = p(2);
-  % betas   = p(3);
-  % betaR1  = p(4);
-  % betaR2  = p(5);
+  betas   = p(3);
+  betaR1  = p(4);
+  betaR2  = p(5);
   D       = p(6);
   f       = p(7);
   g       = p(8);
   c       = p(9);
   b       = p(10);
   nx      = size(u,1)/2;
+
+  %Override kernels
+% kern = @(x,beta) sqrt(1/(2*pi*beta^2)) * exp( -(1/(2*beta^2))*x.^2);
+% ws  = kern(x,betas);
+% wr1 = kern(x,betaR1);
+% wr2 = kern(x,betaR2);
 
   % Split variable
   iR = idx(:,1); iS = idx(:,2);
